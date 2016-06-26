@@ -18,10 +18,12 @@
 #pragma once
 
 typedef enum {
-  PWM_TYPE_ONESHOT125 = 0,
-  PWM_TYPE_ONESHOT42 = 1,
-  PWM_TYPE_MULTISHOT = 2
-} FastPwmProtocolTypes_e;
+    PWM_TYPE_CONVENTIONAL = 0,
+    PWM_TYPE_ONESHOT125,
+    PWM_TYPE_ONESHOT42,
+    PWM_TYPE_MULTISHOT,
+    PWM_TYPE_BRUSHED
+} motorPwmProtocolTypes_e;
 
 void pwmWriteMotor(uint8_t index, uint16_t value);
 void pwmShutdownPulsesForAllMotors(uint8_t motorCount);
@@ -29,6 +31,5 @@ void pwmCompleteOneshotMotorUpdate(uint8_t motorCount);
 
 void pwmWriteServo(uint8_t index, uint16_t value);
 
-bool isMotorBrushed(uint16_t motorPwmRate);
 void pwmDisableMotors(void);
 void pwmEnableMotors(void);
